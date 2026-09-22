@@ -6,7 +6,7 @@
 <title>ولتکس | فروشگاه پرمیوم مکمل و لوازم ورزشی</title>
 <meta name="description" content="ولتکس — سوخت قهرمانان واقعی. فروشگاه لاکچری مکمل، آناتومی تعاملی بدن، ماشین‌حساب بدنسازی و برنامه تمرینی هوشمند.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%2316a34a'/><path d='M30 50 L45 65 L72 35' stroke='%2304140a' stroke-width='10' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
-<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/styles.css?v=7">
 </head>
 <body>
 
@@ -32,6 +32,7 @@
       <li><a href="#anatomy">آناتومی بدن</a></li>
       <li><a href="#calc">ماشین‌حساب</a></li>
       <li><a href="#program">برنامه تمرینی</a></li>
+      <li><a href="#blog">بلاگ</a></li>
       <li><a href="#faq">سوالات</a></li>
     </ul>
     <div class="nav-actions">
@@ -41,9 +42,10 @@
           <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg>
         </button>
       </div>
-      <a class="icon-btn dl" href="voltex-website.zip" download="voltex-website.zip" title="دانلود سورس سایت (ZIP)">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
-      </a>
+      <button class="icon-btn" id="userBtn" title="حساب کاربری">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span class="ubadge" id="userInit" style="display:none">و</span>
+      </button>
       <button class="icon-btn" id="cartBtn" title="سبد خرید">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1.6"/><circle cx="19" cy="21" r="1.6"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 002 1.58h9.78a2 2 0 002-1.58l1.49-6.92H5.12"/></svg>
         <span class="badge" id="cartCount" style="display:none">۰</span>
@@ -56,7 +58,7 @@
 <!-- هیرو -->
 <section class="hero" id="home">
   <div class="hero-bg">
-    <img src="assets/img/hero.webp" alt="ورزشکار حرفه‌ای">
+    <img src="assets/img/hero.jpg" alt="ورزشکار حرفه‌ای ولتکس">
     <span class="orb orb-g"></span><span class="orb orb-o"></span>
   </div>
   <div class="hero-inner container">
@@ -145,6 +147,28 @@
         </select>
       </div>
     </div>
+    <div class="shop-tools2 rv">
+      <div class="sort-sel">
+        <select id="priceSel">
+          <option value="all">همه قیمت‌ها</option>
+          <option value="u1">زیر ۱ میلیون</option>
+          <option value="1-2">۱ تا ۲ میلیون</option>
+          <option value="2-5">۲ تا ۵ میلیون</option>
+          <option value="o5">بالای ۵ میلیون</option>
+        </select>
+      </div>
+      <div class="sort-sel">
+        <select id="rateSel">
+          <option value="0">همه امتیازها</option>
+          <option value="4">امتیاز ۴ به بالا</option>
+          <option value="4.5">امتیاز ۴.۵ به بالا</option>
+          <option value="4.8">امتیاز ۴.۸ به بالا</option>
+        </select>
+      </div>
+      <button class="chip chip-fav" id="favOnly">❤️ فقط علاقه‌مندی‌ها</button>
+      <button class="chip chip-clear" id="clearFilters" style="display:none">✕ پاک کردن فیلترها</button>
+      <span class="res-count num" id="resCount"></span>
+    </div>
     <div class="products" id="productsGrid"></div>
   </div>
 </section>
@@ -153,18 +177,43 @@
 <section class="sec" id="deal" style="padding-top:20px">
   <div class="container">
     <div class="deal rv">
-      <div class="deal-info">
-        <span class="sec-tag tag-orange">⚡ پیشنهاد شگفت‌انگیز امروز</span>
-        <h3>کراتین میکرایز ۳۰۰ گرم<br>با <span style="color:var(--orange-2)">٪۱۶ تخفیف</span> ویژه</h3>
-        <p>فقط تا پایان امروز! خلوص ۹۹.۹٪ با تکنولوژی میکرایز برای جذب کامل و افزایش انفجاری قدرت.</p>
-        <div class="countdown">
-          <div class="cd-box"><b id="cdH">۰۰</b><span>ساعت</span></div>
-          <div class="cd-box"><b id="cdM">۰۰</b><span>دقیقه</span></div>
-          <div class="cd-box"><b id="cdS">۰۰</b><span>ثانیه</span></div>
+      <div class="ticket">
+        <div class="t-body">
+          <span class="sec-tag tag-orange">⚡ پیشنهاد شگفت‌انگیز امروز</span>
+          <h3>کراتین میکرایز ۳۰۰ گرم<br>با <span style="color:#b03a00">٪۱۶ تخفیف</span> ویژه</h3>
+          <p>فقط تا پایان امروز! خلوص ۹۹.۹٪ با تکنولوژی میکرایز برای جذب کامل و افزایش انفجاری قدرت.</p>
+          <div class="deal-price">
+            <div class="dp-now">۱٬۳۵۰٬۰۰۰ <span>تومان</span></div>
+            <s class="dp-old">۱٬۶۰۰٬۰۰۰</s>
+            <span class="dp-badge">٪۱۶-</span>
+          </div>
+          <div class="deal-stock">
+            <div class="ds-top"><span>⚡ انبار در حال اتمام</span><b>فقط ۸ عدد باقی مانده</b></div>
+            <div class="ds-track"><div class="ds-fill"></div></div>
+          </div>
+          <div class="countdown">
+            <div class="cd-box"><b id="cdH">۰۰</b><span>ساعت</span></div>
+            <div class="cd-box"><b id="cdM">۰۰</b><span>دقیقه</span></div>
+            <div class="cd-box"><b id="cdS">۰۰</b><span>ثانیه</span></div>
+          </div>
+          <div class="deal-cta">
+            <button class="btn btn-orange" id="dealBuy">خرید فوری با تخفیف</button>
+            <span class="deal-live"><i></i><b id="dealLiveN">۷</b> نفر همین حالا این پیشنهاد را می‌بینند</span>
+          </div>
+          <div class="t-serial">VOLTEX VIP PASS · سریال VT-۱۴۰۴-۰۲۱ · فقط برای امروز معتبر است</div>
         </div>
-        <div><button class="btn btn-orange" onclick="addToCart('creatine')">خرید فوری با تخفیف</button></div>
+        <div class="t-stub">
+          <div class="deal-pop" id="dealPop">
+            <span class="deal-ring"></span>
+            <img src="assets/img/deal-creatine-v2.png" alt="کراتین میکرایز ولتکس" id="dealImg" data-qv="creatine" title="مشاهده سریع محصول">
+            <span class="deal-shadow"></span>
+            <span class="deal-off3d">٪۱۶-</span>
+          </div>
+          <div class="t-barcode"></div>
+          <div class="t-no">№ ۱۴۰۴-۰۲۱</div>
+        </div>
+        <span class="t-holo"></span>
       </div>
-      <div class="deal-media"><img src="assets/img/p-creatine.webp" alt="کراتین میکرایز"></div>
     </div>
   </div>
 </section>
@@ -185,69 +234,49 @@
         </div>
         <!-- بدن از جلو -->
         <div class="anat-body show" id="bodyFront">
-          <svg viewBox="0 0 300 720" xmlns="http://www.w3.org/2000/svg">
-            <!-- اندام‌های پایه -->
-            <g fill="none" stroke="#101710" stroke-linecap="round">
-              <ellipse cx="150" cy="44" rx="23" ry="28" fill="#101710"/>
-              <rect x="140" y="66" width="20" height="20" rx="8" fill="#101710"/>
-              <path d="M92,100 Q150,86 208,100 L214,165 Q210,215 190,300 L184,350 Q150,364 116,350 L110,300 Q90,215 86,165 Z" fill="#0e130e" stroke="none"/>
-              <path d="M93,122 L74,210" stroke-width="27"/>
-              <path d="M74,210 L63,302" stroke-width="21"/>
-              <path d="M207,122 L226,210" stroke-width="27"/>
-              <path d="M226,210 L237,302" stroke-width="21"/>
-              <circle cx="61" cy="316" r="10" fill="#101710" stroke="none"/>
-              <circle cx="239" cy="316" r="10" fill="#101710" stroke="none"/>
-              <path d="M132,352 L124,500" stroke-width="38"/>
-              <path d="M168,352 L176,500" stroke-width="38"/>
-              <path d="M124,500 L119,652" stroke-width="28"/>
-              <path d="M176,500 L181,652" stroke-width="28"/>
-              <ellipse cx="115" cy="664" rx="17" ry="8" fill="#101710" stroke="none"/>
-              <ellipse cx="185" cy="664" rx="17" ry="8" fill="#101710" stroke="none"/>
-            </g>
-            <!-- عضلات قابل کلیک -->
-            <g class="mgrp" data-m="head"><path d="M141,68 Q150,64 159,68 L157,84 Q150,88 143,84 Z"/></g>
-            <g class="mgrp" data-m="delts"><ellipse cx="97" cy="122" rx="19" ry="18"/><ellipse cx="203" cy="122" rx="19" ry="18"/></g>
-            <g class="mgrp" data-m="chest"><ellipse cx="131" cy="134" rx="20" ry="26" transform="rotate(8 131 134)"/><ellipse cx="169" cy="134" rx="20" ry="26" transform="rotate(-8 169 134)"/></g>
-            <g class="mgrp" data-m="biceps"><ellipse cx="84" cy="172" rx="13" ry="23"/><ellipse cx="216" cy="172" rx="13" ry="23"/></g>
-            <g class="mgrp" data-m="forearms"><ellipse cx="70" cy="258" rx="11" ry="29"/><ellipse cx="230" cy="258" rx="11" ry="29"/></g>
-            <g class="mgrp" data-m="abs"><rect x="130" y="176" width="40" height="108" rx="12"/><path d="M136 205 h28 M136 234 h28 M136 262 h28" stroke="#0e130e" stroke-width="3" fill="none"/></g>
-            <g class="mgrp" data-m="obliques"><path d="M126,182 Q112,232 120,284 L131,280 Q124,234 132,186 Z"/><path d="M174,182 Q188,232 180,284 L169,280 Q176,234 168,186 Z"/></g>
-            <g class="mgrp" data-m="quads"><path d="M118,360 Q110,432 119,498 L141,498 Q148,432 143,364 Z"/><path d="M182,360 Q190,432 181,498 L159,498 Q152,432 157,364 Z"/></g>
-            <g class="mgrp" data-m="calves"><path d="M114,516 Q108,575 116,642 L134,642 Q139,575 135,518 Z"/><path d="M186,516 Q192,575 184,642 L166,642 Q161,575 165,518 Z"/></g>
-          </svg>
+          <div class="anat-fig">
+            <img src="assets/img/anat-front.jpg" alt="آناتومی بدن - نمای جلو">
+            <span class="scan"></span>
+            <button class="hotspot" style="left:50%;top:15%" data-m="head"><i></i><span>سر و گردن</span></button>
+            <button class="hotspot" style="left:28%;top:21.5%" data-m="delts"><i></i><span>سرشانه</span></button>
+            <button class="hotspot" style="left:72%;top:21.5%" data-m="delts"><i></i><span>سرشانه</span></button>
+            <button class="hotspot" style="left:50%;top:26.5%" data-m="chest"><i></i><span>سینه</span></button>
+            <button class="hotspot" style="left:19%;top:30.5%" data-m="biceps"><i></i><span>جلوبازو</span></button>
+            <button class="hotspot" style="left:81%;top:30.5%" data-m="biceps"><i></i><span>جلوبازو</span></button>
+            <button class="hotspot" style="left:50%;top:35.5%" data-m="abs"><i></i><span>شکم</span></button>
+            <button class="hotspot" style="left:41%;top:38%" data-m="obliques"><i></i><span>پهلو</span></button>
+            <button class="hotspot" style="left:59%;top:38%" data-m="obliques"><i></i><span>پهلو</span></button>
+            <button class="hotspot" style="left:16%;top:43%" data-m="forearms"><i></i><span>ساعد</span></button>
+            <button class="hotspot" style="left:84%;top:43%" data-m="forearms"><i></i><span>ساعد</span></button>
+            <button class="hotspot" style="left:41.5%;top:62%" data-m="quads"><i></i><span>چهارسر ران</span></button>
+            <button class="hotspot" style="left:58.5%;top:62%" data-m="quads"><i></i><span>چهارسر ران</span></button>
+            <button class="hotspot" style="left:39.5%;top:80%" data-m="calves"><i></i><span>ساق پا</span></button>
+            <button class="hotspot" style="left:60.5%;top:80%" data-m="calves"><i></i><span>ساق پا</span></button>
+          </div>
         </div>
         <!-- بدن از پشت -->
         <div class="anat-body" id="bodyBack">
-          <svg viewBox="0 0 300 720" xmlns="http://www.w3.org/2000/svg">
-            <g fill="none" stroke="#101710" stroke-linecap="round">
-              <ellipse cx="150" cy="44" rx="23" ry="28" fill="#101710"/>
-              <rect x="140" y="66" width="20" height="20" rx="8" fill="#101710"/>
-              <path d="M92,100 Q150,86 208,100 L214,165 Q210,215 190,300 L184,350 Q150,364 116,350 L110,300 Q90,215 86,165 Z" fill="#0e130e" stroke="none"/>
-              <path d="M93,122 L74,210" stroke-width="27"/>
-              <path d="M74,210 L63,302" stroke-width="21"/>
-              <path d="M207,122 L226,210" stroke-width="27"/>
-              <path d="M226,210 L237,302" stroke-width="21"/>
-              <circle cx="61" cy="316" r="10" fill="#101710" stroke="none"/>
-              <circle cx="239" cy="316" r="10" fill="#101710" stroke="none"/>
-              <path d="M132,352 L124,500" stroke-width="38"/>
-              <path d="M168,352 L176,500" stroke-width="38"/>
-              <path d="M124,500 L119,652" stroke-width="28"/>
-              <path d="M176,500 L181,652" stroke-width="28"/>
-              <ellipse cx="115" cy="664" rx="17" ry="8" fill="#101710" stroke="none"/>
-              <ellipse cx="185" cy="664" rx="17" ry="8" fill="#101710" stroke="none"/>
-            </g>
-            <g class="mgrp" data-m="traps"><path d="M150,70 L106,100 L140,132 L150,152 L160,132 L194,100 Z"/></g>
-            <g class="mgrp" data-m="delts"><ellipse cx="97" cy="122" rx="19" ry="18"/><ellipse cx="203" cy="122" rx="19" ry="18"/></g>
-            <g class="mgrp" data-m="lats"><path d="M150,156 Q118,150 107,170 L114,222 Q130,246 150,254 Q170,246 186,222 L193,170 Q182,150 150,156 Z"/></g>
-            <g class="mgrp" data-m="triceps"><ellipse cx="84" cy="176" rx="13" ry="25"/><ellipse cx="216" cy="176" rx="13" ry="25"/></g>
-            <g class="mgrp" data-m="forearms"><ellipse cx="70" cy="258" rx="11" ry="29"/><ellipse cx="230" cy="258" rx="11" ry="29"/></g>
-            <g class="mgrp" data-m="lowerback"><rect x="132" y="248" width="36" height="46" rx="12"/></g>
-            <g class="mgrp" data-m="glutes"><ellipse cx="130" cy="324" rx="22" ry="24"/><ellipse cx="170" cy="324" rx="22" ry="24"/></g>
-            <g class="mgrp" data-m="hamstrings"><path d="M118,364 Q110,436 119,500 L141,500 Q148,436 143,368 Z"/><path d="M182,364 Q190,436 181,500 L159,500 Q152,436 157,368 Z"/></g>
-            <g class="mgrp" data-m="calves"><path d="M112,516 Q105,578 114,646 L136,646 Q141,576 135,518 Z"/><path d="M188,516 Q195,578 186,646 L164,646 Q159,576 165,518 Z"/></g>
-          </svg>
+          <div class="anat-fig">
+            <img src="assets/img/anat-back.jpg" alt="آناتومی بدن - نمای پشت">
+            <span class="scan"></span>
+            <button class="hotspot" style="left:50%;top:18.5%" data-m="traps"><i></i><span>کول</span></button>
+            <button class="hotspot" style="left:27%;top:22%" data-m="delts"><i></i><span>سرشانه</span></button>
+            <button class="hotspot" style="left:73%;top:22%" data-m="delts"><i></i><span>سرشانه</span></button>
+            <button class="hotspot" style="left:42%;top:29.5%" data-m="lats"><i></i><span>زیربغل و پشت</span></button>
+            <button class="hotspot" style="left:58%;top:29.5%" data-m="lats"><i></i><span>زیربغل و پشت</span></button>
+            <button class="hotspot" style="left:16.5%;top:32%" data-m="triceps"><i></i><span>پشت‌بازو</span></button>
+            <button class="hotspot" style="left:83.5%;top:32%" data-m="triceps"><i></i><span>پشت‌بازو</span></button>
+            <button class="hotspot" style="left:50%;top:38.5%" data-m="lowerback"><i></i><span>کمر</span></button>
+            <button class="hotspot" style="left:14.5%;top:43%" data-m="forearms"><i></i><span>ساعد</span></button>
+            <button class="hotspot" style="left:85.5%;top:43%" data-m="forearms"><i></i><span>ساعد</span></button>
+            <button class="hotspot" style="left:50%;top:49%" data-m="glutes"><i></i><span>باسن</span></button>
+            <button class="hotspot" style="left:41%;top:63%" data-m="hamstrings"><i></i><span>پشت‌ران</span></button>
+            <button class="hotspot" style="left:59%;top:63%" data-m="hamstrings"><i></i><span>پشت‌ران</span></button>
+            <button class="hotspot" style="left:40%;top:79%" data-m="calves"><i></i><span>ساق پا</span></button>
+            <button class="hotspot" style="left:60%;top:79%" data-m="calves"><i></i><span>ساق پا</span></button>
+          </div>
         </div>
-        <div class="anat-hint"><span class="dot"></span> روی هر عضله کلیک کن</div>
+        <div class="anat-hint"><span class="dot"></span> روی نقطه‌های درخشان بدن کلیک کن</div>
       </div>
 
       <div class="anat-panel rv rv-d1">
@@ -410,6 +439,11 @@
 
       </div>
     </div>
+    <div class="calc-trust rv">
+      <div class="ct-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg> ۶ ماشین‌حساب علمی دقیق</div>
+      <div class="ct-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 11-13h-8l1-7z"/></svg> نتایج لحظه‌ای و زنده</div>
+      <div class="ct-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg> بدون نیاز به ثبت‌نام</div>
+    </div>
   </div>
 </section>
 
@@ -457,6 +491,10 @@
             <label class="pf-opt"><input type="radio" name="place" value="home"><span class="radio"></span>خانه (دمبل و کش)</label>
           </div>
         </div>
+        <div class="pf-field">
+          <label><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.5 5 5.5.8-4 3.9.9 5.5-4.9-2.6-4.9 2.6.9-5.5-4-3.9 5.5-.8z"/></svg> نام قهرمان (اختیاری)</label>
+          <input type="text" id="pfName" maxlength="18" placeholder="مثلاً: آرش">
+        </div>
         <button class="btn btn-orange" id="genPlan" style="width:100%;margin-top:8px">⚡ ساخت برنامه</button>
       </div>
       <div class="prog-out rv rv-d1">
@@ -468,6 +506,18 @@
         <div class="prog-plan" id="progPlan"></div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- بلاگ / مجله -->
+<section class="sec" id="blog" style="padding-top:20px">
+  <div class="container">
+    <div class="sec-head rv">
+      <span class="sec-tag tag-green">📚 مجله ولتکس</span>
+      <h2>یاد بگیر، <span class="grad">رشد کن</span></h2>
+      <p>مقالات علمی و کاربردی تغذیه، تمرین و مکمل — نوشته متخصصان ولتکس</p>
+    </div>
+    <div class="blog-grid" id="blogGrid"></div>
   </div>
 </section>
 
@@ -591,8 +641,8 @@
           <li><a href="#anatomy">آناتومی بدن</a></li>
           <li><a href="#calc">ماشین‌حساب بدنسازی</a></li>
           <li><a href="#program">برنامه‌ساز تمرینی</a></li>
+          <li><a href="#blog">مجله ولتکس</a></li>
           <li><a href="#faq">سوالات متداول</a></li>
-          <li><a href="voltex-website.zip" download="voltex-website.zip">دانلود سورس سایت (ZIP) ⬇</a></li>
         </ul>
       </div>
       <div class="f-col">
@@ -616,7 +666,7 @@
     </div>
     <div class="f-bottom">
       <span>© ۱۴۰۴ ولتکس — تمام حقوق محفوظ است.</span>
-      <span>طراحی‌شده با 💚 و ⚡ برای قهرمانان</span>
+      <span><a href="admin.html" style="color:inherit;opacity:.55;font-size:.85em">پنل مدیریت</a> · طراحی‌شده با 💚 و ⚡ برای قهرمانان</span>
     </div>
   </div>
 </footer>
@@ -680,11 +730,72 @@
   </div>
 </div>
 
+<!-- مطالعه مقاله -->
+<div class="modal" id="postModal">
+  <div class="modal-box" style="width:min(760px,100%)">
+    <button class="modal-x" data-pclose><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" style="width:17px;height:17px;stroke:currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    <div class="post-full" id="postFull"></div>
+  </div>
+</div>
+
+<!-- حساب کاربری -->
+<div class="modal" id="authModal">
+  <div class="modal-box" style="width:min(480px,100%)">
+    <button class="modal-x" data-aclose><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" style="width:17px;height:17px;stroke:currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    <div class="auth-box">
+      <div class="auth-tabs" id="authTabs">
+        <button class="active" data-atab="login">ورود</button>
+        <button data-atab="signup">ثبت‌نام</button>
+      </div>
+      <form class="auth-form" id="loginForm" onsubmit="return false">
+        <h3>خوش برگشتی، قهرمان! 💪</h3>
+        <p class="auth-sub">وارد حسابت شو تا خرید سریع‌تری داشته باشی</p>
+        <div class="afield"><label>شماره موبایل</label><input type="tel" id="liPhone" placeholder="۰۹۱۲۳۴۵۶۷۸۹" dir="ltr" style="text-align:right"></div>
+        <div class="afield"><label>رمز عبور</label><input type="password" id="liPass" placeholder="رمز عبورت"></div>
+        <button class="btn btn-green" id="loginBtn" style="width:100%">ورود به حساب</button>
+      </form>
+      <form class="auth-form" id="signupForm" style="display:none" onsubmit="return false">
+        <h3>به کلوپ ولتکس بپیوند 🏆</h3>
+        <p class="auth-sub">ثبت‌نام کن و کد تخفیف WELCOME10 رو بگیر</p>
+        <div class="afield"><label>نام و نام خانوادگی</label><input type="text" id="suName" placeholder="مثلاً علی محمدی"></div>
+        <div class="afield"><label>شماره موبایل</label><input type="tel" id="suPhone" placeholder="۰۹۱۲۳۴۵۶۷۸۹" dir="ltr" style="text-align:right"></div>
+        <div class="afield"><label>رمز عبور (حداقل ۴ کاراکتر)</label><input type="password" id="suPass" placeholder="یه رمز قوی انتخاب کن"></div>
+        <button class="btn btn-orange" id="signupBtn" style="width:100%">ساخت حساب</button>
+      </form>
+      <div id="profileBox" style="display:none">
+        <div class="profile-top">
+          <span class="avatar" id="profileAvatar" style="background:var(--grad-green);width:64px;height:64px;font-size:1.4rem">و</span>
+          <div><h3 id="profileName">کاربر ولتکس</h3><span class="auth-sub num" id="profilePhone"></span></div>
+        </div>
+        <div class="profile-stats">
+          <div><b class="num" id="profileOrders">۰</b><span>سفارش ثبت‌شده</span></div>
+          <div><b class="num" id="profileFav">۰</b><span>علاقه‌مندی</span></div>
+        </div>
+        <button class="btn btn-ghost" id="logoutBtn" style="width:100%">خروج از حساب</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div id="toasts"></div>
 
 <button id="toTop" title="بازگشت به بالا"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
 
-<script src="js/data.js"></script>
-<script src="js/main.js"></script>
+<!-- پوستر قهرمان -->
+<div class="poster-modal" id="posterModal">
+  <div class="poster-box">
+    <button class="poster-x" id="posterClose" title="بستن"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" style="width:20px;height:20px;stroke:currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    <div class="poster-frame"><img id="posterImg" alt="پوستر اختصاصی برنامه ولتکس"></div>
+    <div class="poster-actions">
+      <a class="btn btn-green" id="posterDl" download="voltex-hero-poster.png">دانلود پوستر HD 📥</a>
+      <button class="btn btn-ghost" id="posterAgain">مشاهده برنامه کامل</button>
+    </div>
+    <p class="poster-tip">پوسترت را در استوری بگذار و ولتکس را تگ کن 💚⚡</p>
+  </div>
+</div>
+
+<canvas id="confettiCv"></canvas>
+<script src="js/data.js?v=5"></script>
+<script src="js/main.js?v=11"></script>
 </body>
 </html>
